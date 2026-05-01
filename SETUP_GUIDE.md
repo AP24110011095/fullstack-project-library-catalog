@@ -92,9 +92,36 @@ Then open http://localhost:5173 in your browser.
 - Email: `admin@library.com`
 - Password: `Admin@123`
 
-**Test User:**
-- Email: `user@library.com`
-- Password: `User@123`
+---
+
+## Troubleshooting
+
+### Port Already in Use
+If you encounter an error like "Port 5173 is already in use" or "Port 5174 is already in use":
+1. Kill the process using the port:
+   ```bash
+   # On Windows
+   netstat -ano | findstr :5173
+   taskkill /PID <PID> /F
+   ```
+   Replace 5173 with the port number shown in the error.
+
+2. Or run the dev server on a different port:
+   ```bash
+   npm run dev -- --port 3000
+   ```
+
+### Backend Connection Issues
+- Ensure MongoDB is running locally or the `MONGO_URI` is correct for MongoDB Atlas.
+- Check that the backend server is running on http://localhost:5000.
+
+### Other Common Issues
+- Ensure all dependencies are installed (`npm install` in both backend and frontend).
+- Clear node_modules and reinstall if there are strange errors:
+  ```bash
+  rm -rf node_modules package-lock.json
+  npm install
+  ```
 
 ---
 
